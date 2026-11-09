@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: command
+      ansible.builtin.command: whoami
+      register: result
+
+    - name: debug result
+      ansible.builtin.debug:
+        var: result.stdout
