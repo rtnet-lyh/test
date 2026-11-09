@@ -2,6 +2,10 @@
 - hosts: all
   gather_facts: no
   tasks:
-    - name: debug
+    - name: command
+      ansible.builtin.command: whoami
+      register: result
+
+    - name: debug result
       ansible.builtin.debug:
-        msg: "hello, world!"
+        var: result.stdout
